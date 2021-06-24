@@ -21,6 +21,7 @@ export function Home(){
     const history = useHistory();
     const { signInWithGoogle, user } = useAuth();
     const {theme, toggleTheme} = useTheme();
+    
 
     const [roomCode, setRoomCode] = useState('');
 
@@ -56,14 +57,13 @@ export function Home(){
     return(
         <div id="page-auth">
             <aside>
-                <ChangeTheme></ChangeTheme>
                 <img src={illustrationImg} alt="ilustração simbolizando perguntas e respostas" />               
                 <strong>Crie salas de Q&amp;A ao vivo</strong>
                 <p>Tire as dúvidas da sua audiência em tempo real</p>
             </aside>
             <main>
                 <div className="main-content">
-
+                    <ChangeTheme />
                     { theme === 'light' ? ( 
                         <img src={logoImg} alt="Let me ask" /> 
                     ) : (

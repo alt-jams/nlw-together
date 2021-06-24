@@ -1,13 +1,17 @@
 :root{
-    --background: #f8f8f8;
+    --background: #eeeeee;
     --white: #FFF;
     --darkgray: #29292e;
+    --details: #e2e2e2;
+    --text: #29292e;
 }
 
 .dark {
-    --background: #161224;
+    --background: #1b1829;
     --white: #080510;
     --darkgray: #dbdbf0;
+    --details: #040208;
+    --text: #d3d3e2;
 }
 
 * {

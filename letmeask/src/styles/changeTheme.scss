@@ -1,10 +1,32 @@
+.toggle-bg {
+    border: 2px solid #6a666b;
+    background: #a7a7a7;
+    padding-right: 15px;
+    padding: 8px 23px;
+    position: absolute;
+    top:2.6rem;
+    right:10%;
+    border-radius: 10px;
+
+    &.active {
+        background: #7d0e9e;
+        border: 2px solid #9b14c4; 
+    }
+}
+
 .toggle {
     border: 0;
 
     position: absolute;
     top:2.4rem;
-    right:2rem;
+    right:11.5%;
     cursor: pointer;
 
     background: transparent;
+    color: #1f1424;
+
+    &.active {
+        color: #f5ec6e;
+        right:10%;
+    }
 }

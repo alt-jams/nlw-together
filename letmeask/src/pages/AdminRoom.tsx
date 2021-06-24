@@ -8,8 +8,10 @@ import { ChangeTheme } from '../components/ChangeTheme';
 
 import { useAuth } from '../Hooks/useAuth';
 import { useRoom } from '../Hooks/useRoom';
+import { useTheme } from '../Hooks/useTheme';
 
 import logoImg from '../assets/images/logo.svg';
+import darkModeLogoImg from '../assets/images/dark-mode-logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 
 import '../styles/room.scss';
@@ -21,6 +23,7 @@ type RoomParams = {
 
 export function AdminRoom() {
     const { user } = useAuth();
+    const { theme } = useTheme();
     const history = useHistory();
     const params = useParams<RoomParams>();
     const roomId = params.id;
@@ -52,7 +55,11 @@ export function AdminRoom() {
         <div id="page-room">
             <header>
                 <div className="content">,
-                    <img src={logoImg} alt="Let me Ask" />
+                    { theme === 'light' ? ( 
+                        <img src={logoImg} alt="Let me ask" /> 
+                    ) : (
+                        <img src={darkModeLogoImg} alt="Let me ask" />    
+                    )}
                     <div>
                         <RoomCode code={roomId}/>
                         <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
