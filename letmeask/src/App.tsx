@@ -4,17 +4,20 @@ import { NewRoom } from "./pages/NewRoom";
 
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { AuthContexProvider } from './contexts/AuthContext';
+import { ThemeContextProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthContexProvider>
-        <Switch>
-          <Route path="/" exact component= {Home}/> 
-          <Route path="/rooms/new" component= {NewRoom}/>
-          <Route path="/rooms/:id" component= {Room}/>
-        </Switch>
-      </AuthContexProvider>
+      <ThemeContextProvider>
+        <AuthContexProvider>
+          <Switch>
+            <Route path="/" exact component= {Home}/> 
+            <Route path="/rooms/new" component= {NewRoom}/>
+            <Route path="/rooms/:id" component= {Room}/>
+          </Switch>
+        </AuthContexProvider>
+      </ThemeContextProvider>
     </BrowserRouter>
   );
 }

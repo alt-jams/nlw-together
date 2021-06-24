@@ -21,6 +21,7 @@ export const AuthContex = createContext({} as AuthContextType);
 export function AuthContexProvider(props: AuthContexProviderProps) {
 
     const [user, setUser] = useState<User>();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -36,6 +37,7 @@ export function AuthContexProvider(props: AuthContexProviderProps) {
             name: displayName,
             avatar: photoURL
             })
+            setLoading(false);
         }
         })
 
@@ -50,18 +52,22 @@ export function AuthContexProvider(props: AuthContexProviderProps) {
         const result = await auth.signInWithPopup(provider);
 
         if (result.user) {
-        const { displayName, photoURL, uid } = result.user;
+            const { displayName, photoURL, uid } = result.user;
 
-        if (!displayName || !photoURL) {
-            throw new Error('Missing information from Google Account');
-        }
+            if (!displayName || !photoURL) {
+                throw new Error('Missing information from Google Account');
+            }
 
-        setUser({
-            id: uid,
-            name: displayName,
-            avatar: photoURL
-        })
+            setUser({
+                id: uid,
+                name: displayName,
+                avatar: photoURL
+            })
         }
+    }
+
+    if (loading) {
+        return <p>Carregando...</p>
     }
 
     return (

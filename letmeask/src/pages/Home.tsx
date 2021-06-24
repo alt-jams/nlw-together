@@ -1,8 +1,9 @@
 import { FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Button } from "../components/Button";
 import { useAuth } from '../Hooks/useAuth';
+import { useTheme } from '../Hooks/useTheme';
+import { Button } from "../components/Button";
 import { database } from '../services/firebase';
 
 import illustrationImg from "../assets/images/illustration.svg";
@@ -15,6 +16,8 @@ export function Home(){
 
     const history = useHistory();
     const { signInWithGoogle, user } = useAuth();
+    const {theme, toogleTheme} = useTheme();
+
     const [roomCode, setRoomCode] = useState('');
 
     async function handleCreateRoom() {
@@ -42,8 +45,10 @@ export function Home(){
     }
 
     return(
-        <div id="page-auth">
+        <div id="page-auth" className={theme}>
             <aside>
+                <h1>{theme}</h1>
+                <button onClick={toogleTheme}>toogle</button>
                 <img src={illustrationImg} alt="ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao vivo</strong>
                 <p>Tire as dúvidas da sua audiência em tempo real</p>
