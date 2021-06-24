@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../Hooks/useAuth';
 import { database } from '../services/firebase';
+import { ChangeTheme } from '../components/ChangeTheme';
 
 import logoImg from '../assets/images/logo.svg';
 
@@ -104,6 +105,7 @@ export function Room() {
                     <img src={logoImg} alt="Let me Ask" />
                     <RoomCode code={roomId}/>
                 </div>
+                <ChangeTheme></ChangeTheme>
             </header>
 
             <main className="content">

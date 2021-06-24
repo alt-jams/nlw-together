@@ -27,13 +27,14 @@
             font: 700 36px 'Poppins', sans-serif;
             line-height: 42px;
             margin-top: 16px;
+            color: var(--white);
         }
 
         p {
             font-size: 24px;
             line-height: 32px;
             margin-top: 16px;
-            color: #f8f8f8;
+            color: var(--white);
         }
     }
 
@@ -63,6 +64,7 @@
             font-size: 24px;
             margin: 64px 0 24px;
             font-family:'Poppins', sans-serif; 
+            color: var(--darkgray);
         }
 
         form {
@@ -70,7 +72,7 @@
                 height: 50px;
                 border-radius: 8px;
                 padding: 0 16px;
-                background: #fff;
+                background: var(--white);
                 border: 1px solid #a8a8b3;
             }
 

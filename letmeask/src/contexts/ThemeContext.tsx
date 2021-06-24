@@ -9,7 +9,7 @@ type ThemeContextProps = {
 
 type ThemeContextType = {
     theme: Theme;
-    toogleTheme: () => void;
+    toggleTheme: () => void;
 }
 
 export const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType);
@@ -18,7 +18,7 @@ export function ThemeContextProvider(props: ThemeContextProps) {
 
     const [currentTheme, setCurrentTheme] = useState<Theme>(() => {
         const storagedTheme = localStorage.getItem('theme');
-
+        
         return (storagedTheme ?? 'light') as Theme;
     });
 
@@ -26,12 +26,13 @@ export function ThemeContextProvider(props: ThemeContextProps) {
         localStorage.setItem('theme', currentTheme);
     }, [currentTheme]);
 
-    function toogleTheme() {
+    function toggleTheme() {
         setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
+        document.body.classList.toggle("dark");
     }
 
     return (
-        <ThemeContext.Provider value={{ theme: currentTheme, toogleTheme }}>
+        <ThemeContext.Provider value={{ theme: currentTheme, toggleTheme }}>
             {props.children}
         </ThemeContext.Provider>
     )

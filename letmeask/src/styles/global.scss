@@ -1,3 +1,15 @@
+:root{
+    --background: #f8f8f8;
+    --white: #FFF;
+    --darkgray: #29292e;
+}
+
+.dark {
+    --background: #161224;
+    --white: #080510;
+    --darkgray: #dbdbf0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +17,7 @@
 }
 
 body {
-    background: #f8f8f8;
+    background: var(--background);
     color: #29292e;
 }
 
