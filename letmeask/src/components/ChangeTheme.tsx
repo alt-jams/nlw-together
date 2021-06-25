@@ -1,7 +1,7 @@
 import { FaMoon } from "react-icons/fa";
 import { useTheme } from "../Hooks/useTheme";
 
-import '../styles/changeTheme.scss';
+import '../styles/components/changeTheme.scss';
 
 export function ChangeTheme(){
 

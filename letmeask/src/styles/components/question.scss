@@ -8,6 +8,21 @@
         margin-top: 8px;
     }
 
+    
+    &.highlighted {
+        background: #F4F8FF;
+        border: 1px solid #835afd;
+        font-weight: 500;
+        
+        footer .user-info span {
+            font-weight: 500;
+        }
+    }
+    
+    &.answered {
+        background: #DBDCCD;
+    }
+
     p {
         color: var(--text);
     }
@@ -33,6 +48,11 @@
                 color: var(--darkgray);
                 font-size: 14px;
             }
+        }
+
+        > div {
+            display: flex;
+            gap: 16px;
         }
 
         button {

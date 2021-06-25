@@ -15,7 +15,7 @@ import { database } from '../services/firebase';
 import logoImg from '../assets/images/logo.svg';
 import darkModeLogoImg from '../assets/images/dark-mode-logo.svg';
 
-import '../styles/room.scss';
+import '../styles/pages/room.scss';
 
 type RoomParams = {
     id: string;
@@ -118,6 +118,8 @@ export function Room() {
                                 key={question.id}
                                 content={question.content}
                                 author={question.author}
+                                isAnswered={question.isAnswered}
+                                isHighlighted={question.isHighlighted}
                             >
                                 <button                         className={`like-button ${question.likeId ?  'liked' : ''}`}
                                     type="button"

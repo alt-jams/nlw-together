@@ -14,7 +14,7 @@ import googleIconImg from "../assets/images/google-icon.svg";
 
 import { ChangeTheme } from '../components/ChangeTheme';
 
-import '../styles/auth.scss';
+import '../styles/pages/auth.scss';
 
 export function Home(){
 

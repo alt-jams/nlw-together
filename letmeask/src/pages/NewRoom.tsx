@@ -11,7 +11,7 @@ import illustrationImg from "../assets/images/illustration.svg";
 import darkModeLogoImg from "../assets/images/dark-mode-logo.svg";
 import logoImg from "../assets/images/logo.svg";
 
-import '../styles/auth.scss';
+import '../styles/pages/auth.scss';
 
 export function NewRoom(){
     const { user } = useAuth();
