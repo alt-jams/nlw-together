@@ -28,7 +28,6 @@ export function ThemeContextProvider(props: ThemeContextProps) {
 
     function toggleTheme() {
         setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
-        document.body.classList.toggle("dark");
     }
 
     return (

@@ -9,8 +9,8 @@ export function ChangeTheme(){
 
     return( 
         <div>
-            <div className={`toggle-bg ${ theme == 'dark' ? 'active' : ''}`}></div> 
-            <button className={`toggle ${ theme == 'dark' ? 'active' : ''}`}  onClick={toggleTheme}>
+            <div className={`toggle-bg ${ theme === 'dark' ? 'active' : ''}`}></div> 
+            <button className={`toggle ${ theme === 'dark' ? 'active' : ''}`}  onClick={toggleTheme}>
                 <FaMoon size={26}/>
             </button>
         </div>        

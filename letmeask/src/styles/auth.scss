@@ -2,10 +2,7 @@
     display: flex;
     align-items: stretch;
     height: 100vh;
-
-    &.dark {
-        background: #333;
-    }
+    background: var(--background);
 
     aside {
         flex: 7;
@@ -21,6 +18,7 @@
 
         img {
             max-width: 320px;
+            margin-left: 15%;
         }
 
         strong {

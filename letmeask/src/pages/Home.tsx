@@ -20,7 +20,7 @@ export function Home(){
 
     const history = useHistory();
     const { signInWithGoogle, user } = useAuth();
-    const {theme, toggleTheme} = useTheme();
+    const {theme} = useTheme();
     
 
     const [roomCode, setRoomCode] = useState('');
@@ -55,7 +55,7 @@ export function Home(){
     }
 
     return(
-        <div id="page-auth">
+        <div id="page-auth" className={theme}>
             <aside>
                 <img src={illustrationImg} alt="ilustração simbolizando perguntas e respostas" />               
                 <strong>Crie salas de Q&amp;A ao vivo</strong>

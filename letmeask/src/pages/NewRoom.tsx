@@ -38,7 +38,7 @@ export function NewRoom(){
     }
 
     return(
-        <div id="page-auth">
+        <div id="page-auth" className={theme}>
             <aside>
                 <img src={illustrationImg} alt="ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao vivo</strong>
