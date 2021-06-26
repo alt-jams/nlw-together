@@ -10,7 +10,7 @@
 
     
     &.highlighted {
-        background: #F4F8FF;
+        background: var(--highlight);
         border: 1px solid #835afd;
         font-weight: 500;
         
@@ -20,7 +20,11 @@
     }
     
     &.answered {
-        background: #DBDCCD;
+        background: var(--answerd);
+        
+        footer .user-info img {
+            opacity: 0.5;
+        }
     }
 
     p {

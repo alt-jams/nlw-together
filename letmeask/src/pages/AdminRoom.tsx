@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom'; 
+import { FaRegCheckCircle, FaCheckCircle } from 'react-icons/fa';
+import { MdChatBubbleOutline, MdChatBubble } from 'react-icons/md';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
@@ -15,8 +17,6 @@ import { database } from '../services/firebase';
 import logoImg from '../assets/images/logo.svg';
 import darkModeLogoImg from '../assets/images/dark-mode-logo.svg';
 import deleteImg from '../assets/images/delete.svg';
-import checkImg from '../assets/images/check.svg';
-import answerImg from '../assets/images/answer.svg';
 
 import '../styles/pages/room.scss';
 
@@ -54,16 +54,31 @@ export function AdminRoom() {
         }
     }
 
-    async function handleCheckQuestionAsAnswered(questionId: string) {
-        await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-            isAnswered: true,
-        });
+    async function handleCheckQuestionAsAnswered(questionId: string, isAnswered: boolean) {
+        if (isAnswered) {
+            await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+                isAnswered: false,
+                isHighlighted: false,
+            });
+        } else {
+            await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+                isAnswered: true,
+            });
+        }  
     }
 
-    async function handleHighlightQuestion(questionId: string) {
-        await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-            isHighlighted: true,
-        });
+    async function handleHighlightQuestion(questionId: string, isHighlighted: boolean, isAnswered: boolean) {
+        if (!isAnswered) {
+            if (isHighlighted) {
+                await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+                    isHighlighted: false,
+                });
+            } else {
+                await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+                    isHighlighted: true,
+                });
+            }  
+        }      
     }
 
     return (
@@ -101,14 +116,22 @@ export function AdminRoom() {
                             >
                                 <button
                                 type = "button"
-                                onClick={() => handleCheckQuestionAsAnswered(question.id)}>
-                                    <img src={checkImg} alt="Marcar pergunta como respondida" />
+                                onClick={() => handleCheckQuestionAsAnswered(question.id, question.isAnswered)}>
+                                    {question.isAnswered ? (
+                                        <FaCheckCircle size={22} color="#835afd"/>
+                                    ) : (
+                                        <FaRegCheckCircle size={22} color="#777786"/>
+                                    )}
                                 </button>
 
                                 <button
                                 type = "button"
-                                onClick={() => handleHighlightQuestion(question.id)}>
-                                    <img src={answerImg} alt="Destacar pergunta" />
+                                onClick={() => handleHighlightQuestion(question.id, question.isHighlighted, question.isAnswered)}>
+                                    { question.isHighlighted ? (
+                                        <MdChatBubble size={22} color="#835afd" />
+                                    ) : (
+                                        <MdChatBubbleOutline  size={22} color="#777786"/>
+                                    )}    
                                 </button>
 
                                 <button
