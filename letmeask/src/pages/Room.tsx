@@ -24,18 +24,11 @@ type RoomParams = {
 export function Room() {
     const { user } = useAuth();
     const { theme } = useTheme();
-    const history = useHistory();
     const params = useParams<RoomParams>();
     const [newQuestion, setNewQuestion] = useState('');
     const roomId = params.id;
     
     const { title, questions } = useRoom(roomId);
-
-    useEffect(() => {
-        if (!user) {
-            history.push('/');
-        }
-    }, [user, history])
 
     async function handleLikeQuestion(questionId: string, likeId: string | undefined){
         if (likeId) {
