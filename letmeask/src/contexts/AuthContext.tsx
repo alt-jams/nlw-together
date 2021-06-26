@@ -21,8 +21,6 @@ export const AuthContex = createContext({} as AuthContextType);
 export function AuthContexProvider(props: AuthContexProviderProps) {
 
     const [user, setUser] = useState<User>();
-    const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
         if (user) {
@@ -37,7 +35,6 @@ export function AuthContexProvider(props: AuthContexProviderProps) {
             name: displayName,
             avatar: photoURL
             })
-            setLoading(false);
         }
         })
 
@@ -64,10 +61,6 @@ export function AuthContexProvider(props: AuthContexProviderProps) {
                 avatar: photoURL
             })
         }
-    }
-
-    if (loading) {
-        return <p>Carregando...</p>
     }
 
     return (
