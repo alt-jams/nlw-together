@@ -7,6 +7,7 @@ import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { ChangeTheme } from '../components/ChangeTheme';
+import { EmptyQuestions } from '../components/EmptyQuestions';
 
 import { useAuth } from '../Hooks/useAuth';
 import { useRoom } from '../Hooks/useRoom';
@@ -103,6 +104,8 @@ export function AdminRoom() {
                     <h1>Sala {title}</h1>
                     { questions.length > 0 && <span> {questions.length} pergunta(s)</span>}
                 </div>
+
+                { questions.length === 0 && <EmptyQuestions />}
 
                 <div className="question-list">
                     {questions.map(question => {

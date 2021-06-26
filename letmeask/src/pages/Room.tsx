@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { ChangeTheme } from '../components/ChangeTheme';
+import { EmptyQuestions } from '../components/EmptyQuestions';
 
 import { useAuth } from '../Hooks/useAuth';
 import { useRoom } from '../Hooks/useRoom';
@@ -22,13 +23,20 @@ type RoomParams = {
 }
 
 export function Room() {
-    const { user } = useAuth();
+    const { user, signInWithGoogle } = useAuth();
     const { theme } = useTheme();
     const params = useParams<RoomParams>();
     const [newQuestion, setNewQuestion] = useState('');
     const roomId = params.id;
+    const history = useHistory();
     
-    const { title, questions } = useRoom(roomId);
+    const { title, questions, authorId } = useRoom(roomId);
+
+    useEffect(() => {
+        if (user?.id === authorId) {
+            history.push(`/admin/rooms/${roomId}`);
+        }
+    }, [user, history, authorId, roomId])
 
     async function handleLikeQuestion(questionId: string, likeId: string | undefined){
         if (likeId) {
@@ -97,12 +105,14 @@ export function Room() {
                             <span>{user.name}</span>
                         </div>
                         ) : (
-                            <span>Para enviar uma pergunta, <button>faça seu login.</button> </span>
+                            <span>Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login.</button> </span>
                         )}
 
                         <Button  type= "submit" disabled={!user}>Enviar pergunta</Button>
                     </div>
                 </form>
+
+                { questions.length === 0 && <EmptyQuestions />}
 
                 <div className="question-list">
                     {questions.map(question => {

@@ -1,0 +1,17 @@
+.empty-questions {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 200px;
+    
+    img {
+        width: 200px;
+        margin: 0 auto;
+        margin-bottom: 26px;
+    }
+
+    h2, p {
+        color: var(--darkgray);
+    }
+}
