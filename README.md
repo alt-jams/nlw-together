@@ -30,6 +30,9 @@ As perguntas das salas apresentam contagem de likes, que permite que o dono da s
 
 ## ⚙ Como rodar
 
+### 💻 Pelo site
+Acesse o link: [Let me ask](https://letmeask-32ff6.web.app)
+
 ### ⚙ Localmente
 Clone o repositório com o comando:
 ``` bash
